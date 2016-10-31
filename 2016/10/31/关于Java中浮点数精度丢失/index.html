@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>关于Java中浮点数精度丢失 | acemurder</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="acemurder">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">acemurder</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-10-31T09:46:52.000Z" itemprop="datePublished">
+          2016-10-31
+      </time>
+    
+    
+    | 
+    <a href='/tags/JAVA/'>JAVA</a>
+    
+    
+</span>
+    <h1 class="post-title">关于Java中浮点数精度丢失</h1>
+    <section class="post-content">
+      <p>前几天有个同学在问，float数运算的时候精度对出现问题，比如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line">        <span class="keyword">float</span> b = <span class="number">0.9f</span>;</div><div class="line">        System.out.print(a * b);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>按道理来说结果应该是<code>2.7</code>,但是运行的结果却不是。<br><img src="http://oegc1nqx7.bkt.clouddn.com/2016-10-31-14778799148384.jpg" alt="-w218"></p>
+<h2 id="定点数-和-浮点数"><a href="#定点数-和-浮点数" class="headerlink" title="定点数 和 浮点数"></a>定点数 和 浮点数</h2><p>记得老师上课的时候讲的，“<em>你们记住，定点数就是整数，浮点数就是下小数</em>”，当时觉得好像没有问题。<br>在计算机中，只有定点数和浮点数，没有整数和小数，浮点的“点”是小数点。 把小数点固定，通常固定在最右面，就是定点数。 把小数点浮动，就是浮点数。</p>
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p>计算机存储任何数字都是基于二进制，那么浮点数怎么存储成二进制？定点、浮点，“点”是什么意思？<br>这个在 <a href="https://zh.wikipedia.org/wiki/IEEE_754" target="_blank" rel="external">IEEE754</a> 浮点数标准里面定义的,Java遵循了这个标准。  过程如下：</p>
+<ul>
+<li><p>第一步：转换成二进制<br> 十进制数字转化成二进制表示形式，通过将整数部分除2取余、小数部分乘2取整来完成转换，所以这里有可能丢失精度   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0.12 =&gt;0.00011110101110000101000111101...</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二步：用二进制科学计算法表示<br>将小数点移动到第一个1的右边</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">0.00011110101110000101000111101...   =&gt;       </div><div class="line"> 1.1110101110000101000111101... * 2 ^ -4</div></pre></td></tr></table></figure>
+</li>
+<li><p>第三步：表示成 IEEE 754 形式<br>这里也可能会丢失精度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1   8位             23位               存不下了</div><div class="line">0 01111011 11101011100001010001111     (01...)</div><div class="line">+ 2的-4次幂 除去整数部分1之后剩余的尾数   0舍1入后忽略这部分，精度就这样没了</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>所以最后我们需要转换成十进制的时候，丢失部分的进度就没办法回来了</p>
+<h2 id="哪些数能精确表示？"><a href="#哪些数能精确表示？" class="headerlink" title="哪些数能精确表示？"></a>哪些数能精确表示？</h2><p>举个例子：0.1 在计算机中可以精确表示吗？<br>我们试一下，试着乘2取整把他转换成二进制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(1)  0.1 x 2 = 0.2  取整数位 0 得 0.0</div><div class="line">(2)  0.2 x 2 = 0.4  取整数位 0 得 0.00</div><div class="line">(3)  0.4 x 2 = 0.8  取整数位 0 得 0.000</div><div class="line">(4)  0.8 x 2 = 1.6  取整数位 1 得 0.0001</div><div class="line">(5)  0.6 x 2 = 0.2  取整数位 1 得 0.00011</div><div class="line">(6)  0.2 x 2 = 0.4  取整数位 0 得 0.000110</div><div class="line">(7)  0.4 x 2 = 0.8  取整数位 0 得 0.0001100</div><div class="line">(8)  0.8 x 2 = 1.6  取整数位 1 得 0.00011001</div><div class="line">(9)  0.6 x 2 = 1.2  取整数位 1 得 0.000110011</div><div class="line">(10) 0.2 x 2 = 0.4  取整数位 1 得 0.0001100110</div><div class="line">(n)...</div></pre></td></tr></table></figure>
+<p>啊哈，返现了没有，居然在循环~，所以我们没办法求出0.1用二进制表示的准确值，所以在第一步就已经丢失了精度<br>其实在0.1 ~ 0.9 中，只有0.5能用二进制精确表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(1)  0.5 x 2 = 1.0  取整数位 1 得 0.1</div><div class="line">(2)  0.0 x 2 = 0.0  取整数位 0 得 0.10</div></pre></td></tr></table></figure>
+<p>哈哈，后面继续下去就都是0了，所以0.5的精度并没有发生丢失。<br>所以我们由此可以推出一个条件<br><code>如果一个十进制数的最后一位是5,那么它可以用二进制精确表示。</code></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="一种思路"><a href="#一种思路" class="headerlink" title="一种思路"></a>一种思路</h3><p>针对小数精度不够的问题（例如 0.1），软件可以人为的在数据最后一位补 5， 也就是 0.15，这样牺牲一位，但是可以保证数据精度，还原再把那个尾巴 5 去掉。</p>
+<h3 id="另一种办法"><a href="#另一种办法" class="headerlink" title="另一种办法"></a>另一种办法</h3><p>讲道理，上一种方法我们实际开发的时候采用是不现实的，<code>float</code> 用 4 个字节存储，<code>double</code> 用 8 个字节存储，精度肯定是有限的，但是一般的计算都足够了。<br>需要高精度计算的时候，我们可以采用<code>BigDecimal</code>类来计算。但是速度会比<code>float</code>和<code>double</code>慢很多~。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>郑昱旋</h4>
+    <p>不为繁华易初心。只为看看更大的世界！！！</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=不为繁华易初心。只为看看更大的世界！！！ ?url=http://yoursite.com/2016/10/31/关于Java中浮点数精度丢失/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2016/10/31/关于Java中浮点数精度丢失/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/31/关于Java中浮点数精度丢失/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/31/关于Java中浮点数精度丢失/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logo">•</span>
+    
+</nav>
+
+  <div id="comment" class="comments-area">
+    <h4 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h4>
+    
+</div>
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="https://github.com/acemurder">acemurder</a> &copy; 2016 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/archives"><span>所有文章</span></a>
+
+          <a class="icon-image"  href="/tags/JAVA"><span>JAVA</span></a>
+
+          <a class="icon-news"  href="/tags/Android"><span>Android</span></a>
+
+          <a class="icon-wiki"  href="/tags/Diary"><span>随记</span></a>
+
+          <a class="icon-Favorites"  href="/tags/Others"><span>其他</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
