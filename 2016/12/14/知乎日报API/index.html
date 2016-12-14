@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="郑昱旋" />
+
+
+
+<meta name="description" content="JSON 格式输出
+以下所有 API 使用的 HTTP Method 均为 GET">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知乎日报API">
+<meta property="og:url" content="http://acemurder.com/2016/12/14/知乎日报API/index.html">
+<meta property="og:site_name" content="acemurder‘s Blog">
+<meta property="og:description" content="JSON 格式输出
+以下所有 API 使用的 HTTP Method 均为 GET">
+<meta property="og:updated_time" content="2016-12-14T10:28:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知乎日报API">
+<meta name="twitter:description" content="JSON 格式输出
+以下所有 API 使用的 HTTP Method 均为 GET">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="acemurder‘s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/bitbug_favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>知乎日报API | acemurder‘s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="http://oegc1nqx7.bkt.clouddn.com/IMG_0051.JPG" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">郑昱旋</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/i@acemurder.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/acemurder" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/users/5a87a35e0422/latest_articles" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">郑昱旋</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="http://oegc1nqx7.bkt.clouddn.com/IMG_0051.JPG" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">郑昱旋</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/i@acemurder.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/acemurder" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/5a87a35e0422/latest_articles" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-知乎日报API" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/14/知乎日报API/" class="article-date">
+      <time datetime="2016-12-14T10:24:39.000Z" itemprop="datePublished">2016-12-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      知乎日报API
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>JSON 格式输出</li>
+<li>以下所有 API 使用的 HTTP Method 均为 <code>GET</code></li>
+</ul>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">   
+
+<h2 id="启动界面图像获取"><a href="#启动界面图像获取" class="headerlink" title="启动界面图像获取"></a>启动界面图像获取</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/start-image/1080*1776" target="_blank" rel="external">http://news-at.zhihu.com/api/4/start-image/1080*1776</a><br><code>start-image</code> 后为图像分辨率，接受如下格式:<br> <code>320*432</code>, <code>480*728</code>, <code>720*1184</code>, <code>1080*1776</code></p>
+<p>返回示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    text: "© Fido Dido",</div><div class="line">    img: "http://p2.zhimg.com/10/7b/107bb4894b46d75a892da6fa80ef504a.jpg"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段：<br><code>text</code> : 供显示的图片版权信息<br><code>img</code> : 图像的 URL</p>
+<h2 id="最新消息"><a href="#最新消息" class="headerlink" title="最新消息"></a>最新消息</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/news/latest" target="_blank" rel="external">http://news-at.zhihu.com/api/4/news/latest</a>  </p>
+<p>返回示例：         </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"date"</span>: <span class="string">"20161214"</span>,                   </div><div class="line">  <span class="attr">"stories"</span>: [  </div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [           </div><div class="line">        <span class="string">"http://pic3.zhimg.com/1a1ad1682cc17b7058633f2e87368976.jpg"</span>   </div><div class="line">      ],   </div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9031146</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"121416"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"为什么国产电影总是花大量的钱在明星身上？"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic3.zhimg.com/afab44d4ef0758d1940eaccbe622cf9a.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9065007</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"121415"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"三国杀的战术和专利竞争"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic4.zhimg.com/76197937faa9a8b1005b716b12612a53.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9063416</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"121414"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"如何巧妙地达到沟通目的？"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic4.zhimg.com/ec1e27a350b31f700d866a600be2354f.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9064857</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"121413"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"苹果的 AirPods 开卖了，这是用了一个多月的体验"</span></div><div class="line">    &#125;,</div><div class="line">  <span class="string">"top_stories"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"image"</span>: <span class="string">"http://pic4.zhimg.com/c72a8f7b4de4d30c2223892f2069d94f.jpg"</span>,</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9031146</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"121416"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"为什么国产电影总是花大量的钱在明星身上？"</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段：<br><code>date</code> : 日期<br><code>stories</code> : 当日新闻<br><code>title</code> : 新闻标题<br><code>images</code> : 图像地址（官方 API 使用数组形式。目前暂未有使用多张图片的情形出现，曾见无 images 属性的情况，请在使用中注意 ）<br><code>ga_prefix</code> : 供 Google Analytics 使用<br><code>type</code> : 作用未知<br><code>id</code> : url 与 share_url 中最后的数字（应为内容的 id）<br><code>multipic</code> : 消息是否包含多张图片（仅出现在包含多图的新闻中）<br><code>top_stories</code> : 界面顶部 ViewPager 滚动显示的显示内容（子项格式同上）</p>
+<h2 id="消息内容获取与离线下载"><a href="#消息内容获取与离线下载" class="headerlink" title="消息内容获取与离线下载"></a>消息内容获取与离线下载</h2><p><code>URL</code>: <a href="http://news-at.zhihu.com/api/4/news/3892357" target="_blank" rel="external">http://news-at.zhihu.com/api/4/news/3892357</a><br>    使用在 最新消息 中获得的 id，拼接在 <code>http://news-at.zhihu.com/api/4/news/</code>后，得到对应消息 JSON 格式的内容<br>返回示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    body: "&lt;div class="main-wrap content-wrap"&gt;...&lt;/div&gt;",</div><div class="line">    image_source: "Yestone.com 版权图片库",</div><div class="line">    title: "深夜惊奇 · 朋友圈错觉",</div><div class="line">    image: "http://pic3.zhimg.com/2d41a1d1ebf37fb699795e78db76b5c2.jpg",</div><div class="line">    share_url: "http://daily.zhihu.com/story/4772126",</div><div class="line">    js: [ ],</div><div class="line">    recommenders": [</div><div class="line">        &#123; "avatar": "http://pic2.zhimg.com/fcb7039c1_m.jpg" &#125;,</div><div class="line">        &#123; "avatar": "http://pic1.zhimg.com/29191527c_m.jpg" &#125;,</div><div class="line">        &#123; "avatar": "http://pic4.zhimg.com/e6637a38d22475432c76e6c9e46336fb_m.jpg" &#125;,</div><div class="line">        &#123; "avatar": "http://pic1.zhimg.com/bd751e76463e94aa10c7ed2529738314_m.jpg" &#125;,</div><div class="line">        &#123; "avatar": "http://pic1.zhimg.com/4766e0648_m.jpg" &#125;</div><div class="line">    ],</div><div class="line">    ga_prefix: "050615",</div><div class="line">    section": &#123;</div><div class="line">        "thumbnail": "http://pic4.zhimg.com/6a1ddebda9e8899811c4c169b92c35b3.jpg",</div><div class="line">        "id": 1,</div><div class="line">        "name": "深夜惊奇"</div><div class="line">    &#125;,</div><div class="line">    type: 0,</div><div class="line">    id: 4772126,</div><div class="line">    css: [</div><div class="line">        "http://news.at.zhihu.com/css/news_qa.auto.css?v=1edab"</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段：<br><code>body</code> : HTML 格式的新闻<br><code>image-source</code> : 图片的内容提供方。为了避免被起诉非法使用图片，在显示图片时最好附上其版权信息。<br><code>title</code> : 新闻标题<br><code>image</code> : 获得的图片同 最新消息 获得的图片分辨率不同。这里获得的是在文章浏览界面中使用的大图。<br><code>share_url</code> : 供在线查看内容与分享至 SNS 用的 URL<br><code>js</code> : 供手机端的 WebView使用<br><code>recommenders</code> : 这篇文章的推荐者<br><code>ga_prefix</code>: 供 Google Analytics 使用<br><code>section</code> : 栏目的信息<br><code>thumbnail</code> : 栏目的缩略图<br><code>id</code> : 该栏目的 id<br><code>name</code> : 该栏目的名称<br><code>type</code> : 新闻的类型<br><code>id</code>: 新闻的 id<br><code>css</code> : 供手机端的 WebView(UIWebView) 使用<br>可知，知乎日报的文章浏览界面利用 WebView实现  </p>
+<h2 id="过往消息"><a href="#过往消息" class="headerlink" title="过往消息"></a>过往消息</h2><p>URL:  <a href="http://news.at.zhihu.com/api/4/news/before/20161201" target="_blank" rel="external">http://news.at.zhihu.com/api/4/news/before/20131119</a><br>若果需要查询 12 月 2 日的消息，before 后的数字应为 20161201<br>知乎日报的生日为 2013 年 5 月 19 日，若 before 后数字小于 20130520 ，只会接收到空消息<br>输入的今日之后的日期仍然获得今日内容，但是格式不同于最新消息的 JSON 格式<br>返回示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"date"</span>: <span class="string">"20161130"</span>,</div><div class="line">  <span class="attr">"stories"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic1.zhimg.com/3656f4c272433e0ac5a9727babac28c4.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9017209</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"113022"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"小事 · 要不要回家养猪"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic2.zhimg.com/1b758d3c64805180aa500ef28afafd49.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9023041</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"113007"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"读读日报 24 小时热门 TOP 5 · 川普公开招聘 4000 个副部级职位，史上首次？"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic1.zhimg.com/56cc2ac4cdb8eba87e9b7b976a10869c.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9022423</span>,</div><div class="line">      <span class="attr">"ga_prefix"</span>: <span class="string">"113006"</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"瞎扯 · 如何正确地吐槽"</span></div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="新闻额外信息"><a href="#新闻额外信息" class="headerlink" title="新闻额外信息"></a>新闻额外信息</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/story-extra/9017209" target="_blank" rel="external">http://news-at.zhihu.com/api/4/story-extra/9017209</a><br>最后的数字是新闻的ID，获取对应新闻的额外信息，如评论数量，所获的『赞』的数量</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"long_comments"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"popularity"</span>: <span class="number">161</span>,</div><div class="line">    <span class="attr">"short_comments"</span>: <span class="number">19</span>,</div><div class="line">    <span class="attr">"comments"</span>: <span class="number">19</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段：<br><code>long_comments</code> : 长评论总数<br><code>popularity</code>: 点赞总数<br><code>short_comments</code>: 短评论总数<br><code>comments</code> : 评论总数   </p>
+<h2 id="新闻对应长评论查看"><a href="#新闻对应长评论查看" class="headerlink" title="新闻对应长评论查看"></a>新闻对应长评论查看</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/story/9017209/long-comments" target="_blank" rel="external">http://news-at.zhihu.com/api/4/story/9017209/long-comments</a><br>使用在 最新消息 中获得的 id，在 <code>http://news-at.zhihu.com/api/4/story/#{id}/long-comments</code>中将 id 替换为对应的 id，得到长评论 JSON 格式的内容<br>返回示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"comments"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"棍棍_風暴之灵"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"不敢苟同作者的观点，在你眼中可能四线城市甚至是县城更多的是无知、愚昧、落后。但是我只能说你就像带着有色眼镜一样去否定一个国家最基本的组成单元，北京就真的能摒除这所谓的世俗了么？其实哪里都是一样的，只是外在的表象在你心中的印象不同罢了。"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic3.zhimg.com/b06dca0a55ed7b263449b013c1bef5fa_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1480996207</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27431257</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">2</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"西西利亚王"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"我觉得现在人有个误区就是在老家都是讲人情要应酬，而在北京就可以靠自己奋斗而功成名就。其实在北京也一样，只是北京太大了，你没背景连那些应酬的圈子都进不了，你一直奋斗却连玻璃天花板都看不到，不是没有，是你还没到那份上。"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic4.zhimg.com/ff9b0b0af_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1480612923</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27383398</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">90</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"雪天宇瞻"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"是呀，我也是北京土著，其实我们面对的压力也很大，能来北京闯世界的都是全国各地的精英，都有不达目的誓不罢休的决心。\n说实话北京人面对的竞争是非常大的，我大概20年前上的班，在国企一年后跳槽到了一家台企，工资是原来的四倍，我想推荐我的同学也去，可是那个同学说，我是北京人，有正经工作，为什么要去伺候人？现在这个同学还住在大杂院，在一个小区做物业维修。\n17年前我结婚，老婆是无锡人，北大毕业，174公分，可是我的很多朋友和同学都嘲笑我，说我居然娶了一个外地人，说最不济的北京人也要娶一个郊区的，我老婆婚后又读了北大的研究生，考了CFA，收入是那些人的十倍，可是偶尔同学见面的时候，他们还是认为我不该娶一个外地人。\n我说这么多其实是觉得北京人才是应该觉醒的，在这么好的地方，也没有退路，就要充分利用自己的身份优势，好好学习，开拓眼界，不要抱残守缺，要勇敢的参与竞争，而不是甩片汤话，骂闲街，说要求外地人都滚蛋一类的可笑话。"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic1.zhimg.com/bf236b0e4c7f5a30131527354ab3d4f8_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1480566494</span>,</div><div class="line">      <span class="attr">"reply_to"</span>: &#123;</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"北京姑娘，其实特别不理解北京为什么一直被外地的朋友骂来骂去但还甘之如饴。不是地域黑，只是不明白。看了答主的文章跟您的回复，我有点懂了，超级城市带给人们的诱惑和吸引力是土著无法体会跟想象的。不过，享受了超级城市的发展也得扛得住超级城市的房价，这也是非常刺激的！"</span>,</div><div class="line">        <span class="attr">"status"</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="number">27376534</span>,</div><div class="line">        <span class="attr">"author"</span>: <span class="string">"范羽羽"</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27377091</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">22</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"木爻木大心亘兮士心鸷鸟不群"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"老家是中原的一个小县城，老家的家族混的挺出，关系网亦都很广。大学之前就没想过出老家，因为几代的关系网、亲朋好友、小初高同学都在这里，会活的很舒服很安逸，做什么事也都会有办法。而在我接受4年高等（比较高等）教育、出来在大城市生活过后，我一时觉得很迷茫……是回老家与朋友日日笙歌？还是在大城市踽踽独行？讲真我现在在老家并不快乐。生意没有，应酬挺多，大多都是泛泛之交脸熟而已，老家都认为多条朋友多条路，所以都近乎疯狂地在外面社交（喝酒）。我觉得这是本末倒置，没有实力没有能力，关系再多，真正伸手拉你的的又有几个？现在我与老家的哥们朋友已有代沟了，讲不到一起去，思想真的觉得很有差别（我并不是说看不起他们的思想，就像文章里说的，子非鱼，安知鱼之乐）。我一直很犹豫，无非就是老家的安逸环境和关系网在吸引着我。但是我心之所向显而易见。"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic3.zhimg.com/5c14bfc87bdabd5c2370f95239063f66_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1480557448</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27375870</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段：<br><code>comments</code> : 长评论列表，形式为数组（请注意，其长度可能为 0）<br><code>author</code> : 评论作者<br><code>id</code>: 评论者的唯一标识符<br><code>content</code>: 评论的内容<br><code>likes</code>: 评论所获『赞』的数量<br><code>time</code>: 评论时间<br><code>avatar</code>: 用户头像图片的地址</p>
+<h2 id="新闻对应短评论查看"><a href="#新闻对应短评论查看" class="headerlink" title="新闻对应短评论查看"></a>新闻对应短评论查看</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/story/9017209/short-comments" target="_blank" rel="external">http://news-at.zhihu.com/api/4/story/9017209/short-comments</a><br>使用在 最新消息 中获得的 id，在<code>http://news-at.zhihu.com/api/4/story/#{id}/short-comments</code>中将 id 替换为对应的 id，得到短评论 JSON 格式的内容<br>返回示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"comments"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"7柒7柒"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"对不起"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic1.zhimg.com/36cec09b85dfee436109d0551c985a74_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1481555368</span>,</div><div class="line">      <span class="attr">"reply_to"</span>: &#123;</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"恭喜答主找到自己喜欢的生活方式，也许在不同年龄、不同阶段，人向往的生活方式可能并不只有一种形式。anyway，自己喜欢就好，并不需要在意别人的看法，尽管我现在超级想回到那种跟闺蜜朋友大口喝酒，彻夜无聊的时候。"</span>,</div><div class="line">        <span class="attr">"status"</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="number">27373741</span>,</div><div class="line">        <span class="attr">"author"</span>: <span class="string">"徐超"</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27494369</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"羽飞甍"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"农村的普罗大众与答主显然不是一类人了。\n普罗大众是过着小县城里普罗大众该有的稀里哗啦的猜拳生活，达主在大城市里过着灯红酒绿的白领生活。\n达主显然是有些自命清高，以及觉得自己与以前的同学相比是超然不群的。\n\n接下来让我们回到原来的问题上，\n老家养猪年收入100w，城市工作年收入10w。\n\n选择老家养猪显然是稀里哗啦的，城市工作显然是干净整洁的。\n然而不论老家养猪，还是城市工作，都是为了获取物资来满足自身。\n\n再进一步来讲，获取物质的目的，都是为了我们的精神来服务的。\n\n精神的需求才是最终的目的。\n为了发到这个目的，在这个路途上，养猪年100，与城市年10，都是在为了目的这一指导思想下达成的妥协。\n没有谁会喜欢养猪这一职业，但为了更快的获取物质，来为精神的需求完成储备，这是牺牲。\n没有谁不知道10和100应该如何选择，但为了在获取物质的时候，更能贴近精神的需求，时间的牺牲，乃是必然。\n\n精神的需求，每个人都有不同，在这一目的的指导下，每个人都会选择不同的妥协。\n\n\n好了，我编不下去了，我去看狗血电视剧了《咱们相爱吧》🐶"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic4.zhimg.com/fc06162634bc066a89ccccd0873a8d13_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1480600455</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27381437</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"author"</span>: <span class="string">"马小白"</span>,</div><div class="line">      <span class="attr">"content"</span>: <span class="string">"赞同哈哈哈哈哈哈哈可是我大西安没有muse~"</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic3.zhimg.com/c76b949858a40356e6df644b446dd262_im.jpg"</span>,</div><div class="line">      <span class="attr">"time"</span>: <span class="number">1480595857</span>,</div><div class="line">      <span class="attr">"reply_to"</span>: &#123;</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"不会是西安吧？我也从沿海回西安，感觉很好。一下那不叫工作，叫打工。三线又满足不了精神需求，二线刚刚好"</span>,</div><div class="line">        <span class="attr">"status"</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="number">27379894</span>,</div><div class="line">        <span class="attr">"author"</span>: <span class="string">"勇敢的心2430975287"</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">27380797</span>,</div><div class="line">      <span class="attr">"likes"</span>: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段含义同长评论</p>
+<h2 id="主题日报列表查看"><a href="#主题日报列表查看" class="headerlink" title="主题日报列表查看"></a>主题日报列表查看</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/themes" target="_blank" rel="external">http://news-at.zhihu.com/api/4/themes</a><br>返回示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"limit"</span>: <span class="number">1000</span>,</div><div class="line">  <span class="attr">"subscribed"</span>: [],</div><div class="line">  <span class="attr">"others"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"color"</span>: <span class="number">15007</span>,</div><div class="line">      <span class="attr">"thumbnail"</span>: <span class="string">"http://pic3.zhimg.com/0e71e90fd6be47630399d63c58beebfc.jpg"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"了解自己和别人，了解彼此的欲望和局限。"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">13</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"日常心理学"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"color"</span>: <span class="number">8307764</span>,</div><div class="line">      <span class="attr">"thumbnail"</span>: <span class="string">"http://pic4.zhimg.com/2c38a96e84b5cc8331a901920a87ea71.jpg"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"内容由知乎用户推荐，海纳主题百万，趣味上天入地"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">12</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"用户推荐日报"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"color"</span>: <span class="number">6123007</span>,</div><div class="line">      <span class="attr">"thumbnail"</span>: <span class="string">"http://pic1.zhimg.com/a0f97c523c64e749c700b2ddc96cfd7c.jpg"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"用技术的眼睛仔细看懂每一部动画和漫画"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">9</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"动漫日报"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"color"</span>: <span class="number">16046124</span>,</div><div class="line">      <span class="attr">"thumbnail"</span>: <span class="string">"http://pic1.zhimg.com/bcf7d594f126e5ceb22691be32b2650a.jpg"</span>,</div><div class="line">      <span class="attr">"description"</span>: <span class="string">"关注体育，不吵架。"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">8</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"体育日报"</span></div><div class="line">    &#125;</div><div class="line">    ···</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>limit</code> : 返回数目之限制（仅为猜测）<br><code>subscribed</code> : 已订阅条目<br><code>others</code>: 其他条目<br><code>color</code> : 颜色，作用未知<br><code>thumbnail</code>: 供显示的图片地址<br><code>description</code> : 主题日报的介绍<br><code>id</code>: 该主题日报的编号<br><code>name</code>: 供显示的主题日报名称</p>
+<h2 id="主题日报内容查看"><a href="#主题日报内容查看" class="headerlink" title="主题日报内容查看"></a>主题日报内容查看</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/theme/10" target="_blank" rel="external">http://news-at.zhihu.com/api/4/theme/13</a><br>使用在 主题日报列表查看 中获得需要查看的主题日报的 id，拼接在<code>http://news-at.zhihu.com/api/4/theme/</code>后，得到对应主题日报 JSON 格式的内容<br>返回实例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"stories"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"type"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">8362682</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"更多互联网安全的内容，都在读读日报里"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic1.zhimg.com/5b488afdcac96b9fc92ae437c357b168.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">2</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">8343399</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"走近黑客产业链：藏匿在黑暗世界的暴利链条"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic1.zhimg.com/dfefe5ebda86c2a15d3928725e107064.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">2</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">8341867</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"硅谷投资人弓峰敏漫谈：互联网安全创投的现在与未来"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic1.zhimg.com/45c20fa77f4dd1792fa3d24f4ac2c284.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">2</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">8314205</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"国外隐私泄露看的过瘾吗？这次中招的是中国大佬们"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"images"</span>: [</div><div class="line">        <span class="string">"http://pic4.zhimg.com/44c5aab16be1d37bc082bcf3b4294ba3.jpg"</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"type"</span>: <span class="number">2</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">8311276</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"公有云安全修炼之路？郭靖和周伯通带你走"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"url"</span>: <span class="string">"http://www.zhihu.com/people/____"</span>,</div><div class="line">      <span class="attr">"bio"</span>: <span class="string">"PKAV &amp; Wooyun"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">38</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic1.zhimg.com/815b2ec82_m.jpg"</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"长短短"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"url"</span>: <span class="string">"http://www.zhihu.com/people/Evi1m0"</span>,</div><div class="line">      <span class="attr">"bio"</span>: <span class="string">"就职于知道创宇的文艺伪黑客"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">36</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic3.zhimg.com/db7c1fd20_m.jpg"</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"Evi1m0"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"url"</span>: <span class="string">"http://www.zhihu.com/people/evilcos"</span>,</div><div class="line">      <span class="attr">"bio"</span>: <span class="string">"就职于知道创宇的白帽子黑客"</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">37</span>,</div><div class="line">      <span class="attr">"avatar"</span>: <span class="string">"http://pic3.zhimg.com/0ff5f63c7_m.jpg"</span>,</div><div class="line">      <span class="attr">"name"</span>: <span class="string">"余弦"</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  <span class="attr">"image_source"</span>: <span class="string">""</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段：    </p>
+<ul>
+<li><code>stories</code>: 该主题日报中的文章列表   <ul>
+<li><code>images</code> : 图像地址（类型为数组。请留意在代码中处理无该属性与数组长度为 0 的情况）</li>
+<li><code>type</code> : 类型，作用未知</li>
+<li><code>title</code> : 消息的标题</li>
+</ul>
+</li>
+<li><code>description</code> : 该主题日报的介绍</li>
+<li><code>background</code> : 该主题日报的背景图片（大图）</li>
+<li><code>color</code> : 颜色，作用未知</li>
+<li><code>name</code> : 该主题日报的名称</li>
+<li><code>image</code> : 背景图片的小图版本</li>
+<li><code>editors</code> : 该主题日报的编辑（『用户推荐日报』中此项的指是一个空数组，在 App 中的主编栏显示为『许多人』，点击后访问该主题日报的介绍页面，请留意）<ul>
+<li><code>url</code> : 主编的知乎用户主页</li>
+<li><code>bio</code> : 主编的个人简介</li>
+<li><code>id</code> : 数据库中的唯一表示符</li>
+<li><code>avatar</code> : 主编的头像</li>
+<li><code>name</code>: 主编的姓名</li>
+</ul>
+</li>
+</ul>
+<h2 id="获取某个专栏之前的新闻"><a href="#获取某个专栏之前的新闻" class="headerlink" title="获取某个专栏之前的新闻"></a>获取某个专栏之前的新闻</h2><p>URL: <a href="http://news-at.zhihu.com/api/4/theme/10/before/4870203" target="_blank" rel="external">http://news-at.zhihu.com/api/4/theme/10/before/4870203</a><br>将 专栏id填入到 <code>#{theme id}</code>, 将新闻<code>id</code>填入到<code>#{id}</code>，如 <code>http://news-at.zhihu.com/api/4/theme/10/before/4870203</code><br>注：新闻id要是属于该专栏，否则，返回结果为空</p>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/14/知乎日报API/">知乎日报API</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">郑昱旋</a></p>
+        <p><span>发布时间:</span>2016-12-14, 18:24:39</p>
+        <p><span>最后更新:</span>2016-12-14, 18:28:09</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/14/知乎日报API/" title="知乎日报API">http://acemurder.com/2016/12/14/知乎日报API/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://acemurder.com/2016/12/14/知乎日报API/　　作者: 郑昱旋" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/31/关于Java中浮点数精度丢失/">
+                    关于Java中浮点数精度丢失
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#启动界面图像获取"><span class="toc-number">1.</span> <span class="toc-text">启动界面图像获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最新消息"><span class="toc-number">2.</span> <span class="toc-text">最新消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息内容获取与离线下载"><span class="toc-number">3.</span> <span class="toc-text">消息内容获取与离线下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过往消息"><span class="toc-number">4.</span> <span class="toc-text">过往消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新闻额外信息"><span class="toc-number">5.</span> <span class="toc-text">新闻额外信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新闻对应长评论查看"><span class="toc-number">6.</span> <span class="toc-text">新闻对应长评论查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新闻对应短评论查看"><span class="toc-number">7.</span> <span class="toc-text">新闻对应短评论查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题日报列表查看"><span class="toc-number">8.</span> <span class="toc-text">主题日报列表查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题日报内容查看"><span class="toc-number">9.</span> <span class="toc-text">主题日报内容查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取某个专栏之前的新闻"><span class="toc-number">10.</span> <span class="toc-text">获取某个专栏之前的新闻</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"知乎日报API　| acemurder‘s Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/14/知乎日报API/" data-title="知乎日报API" data-url="http://acemurder.com/2016/12/14/知乎日报API/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"acemurder"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/10/31/关于Java中浮点数精度丢失/" title="下一篇: 关于Java中浮点数精度丢失">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/14/知乎日报API/">知乎日报API</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/关于Java中浮点数精度丢失/">关于Java中浮点数精度丢失</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 郑昱旋
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
